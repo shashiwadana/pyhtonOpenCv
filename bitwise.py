@@ -7,12 +7,12 @@ img2 = cv2.imread('lena.jpg')
 
 #bitAnd = cv2.bitwise_and(img1, img2)
 #bitOr = cv2.bitwise_or(img1,img2)
-bitxOr = cv2.bitwise_xor(img1,img2)
-#bitOr = cv2.bitwise_or(img1,img2)
+#bitxOr = cv2.bitwise_xor(img1,img2)
+bitnot = cv2.bitwise_not(img1,img2)
 
 
 #cv2.imshow('image',img1)
 #cv2.imshow('image',img2)
-cv2.imshow('and',bitxOr)
+cv2.imshow('and',bitnot)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
