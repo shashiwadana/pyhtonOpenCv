@@ -10,12 +10,16 @@ dilation = cv2.dilate(mask,kernel,iterations=2)
 erosion = cv2.erode(mask,kernel,iterations=1) #erode the boundary of foreground objects
 opening =cv2.morphologyEx(mask, cv2.MORPH_OPEN,kernel)#erosion+dialation
 closing =cv2.morphologyEx(mask, cv2.MORPH_CLOSE,kernel)#dialation+erosion
+mg =cv2.morphologyEx(mask, cv2.MORPH_GRADIENT,kernel)#difference dialation and erosion
+th =cv2.morphologyEx(mask, cv2.MORPH_TOPHAT,kernel)#difference between image and opening
 
-titles = ['image','mask','dialation','erosion','opening','closing']
-images = [img,mask,dilation,erosion,opening,closing]
 
-for i in range(6):
-    plt.subplot( 2, 3, i+1),plt.imshow(images[i],'gray')
+
+titles = ['image','mask','dialation','erosion','opening','closing','gradient','tophat']
+images = [img,mask,dilation,erosion,opening,closing,mg,th]
+
+for i in range(8):
+    plt.subplot( 2, 4, i+1),plt.imshow(images[i],'gray')
     plt.title(titles[i])
     plt.xticks([]), plt.yticks([])
 plt.show()
