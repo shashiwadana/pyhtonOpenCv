@@ -9,7 +9,7 @@ kernel = np.ones((2,2),np.uint8)
 dilation = cv2.dilate(mask,kernel,iterations=2)
 erosion = cv2.erode(mask,kernel,iterations=1) #erode the boundary of foreground objects
 opening =cv2.morphologyEx(mask, cv2.MORPH_OPEN,kernel)#erosion+dialation
-
+closing =cv2.morphologyEx(mask, cv2.MORPH_CLOSE,kernel)#dialation+erosion
 
 titles = ['image','mask','dialation','erosion','opening','closing']
 images = [img,mask,dilation,erosion,opening,closing]
