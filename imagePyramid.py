@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-
+#use to blend and reconstruct
 img = cv2.imread('lena.jpg')
 layer = img.copy()
 gp =[layer]
