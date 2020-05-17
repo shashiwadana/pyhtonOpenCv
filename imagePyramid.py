@@ -2,13 +2,12 @@ import numpy as np
 import cv2
 
 img = cv2.imread('lena.jpg')
-lr1 = cv2.pyrDown(img)
-lr2 = cv2.pyrDown(lr1)
-hr = cv2.pyrUp(lr2)
-
-cv2.imshow('Original image',img)
-cv2.imshow('lower  res image',lr1)
-cv2.imshow('lower  res2 image',lr2)
-cv2.imshow('higher  res2 image',hr)
+layer = img.copy()
+gp =[layer]
+for i in range(6):
+    layer=cv2.pyrDown(layer)
+    gp.append(layer)
+    cv2.imshow(str(i),layer)
+cv2.imshow('image',img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
