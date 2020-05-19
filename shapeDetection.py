@@ -14,11 +14,19 @@ for contour in contours:
     if len(approx) == 3:
         cv2.putText(img,"Triangle",(x,y),cv2.FONT_HERSHEY_COMPLEX,0.5,(0,0,0))
     elif len(approx) == 4:
-        cv2.putText(img, "rectangle", (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
+        x, y, w, h=cv2.boundingRect(approx)
+        aspectRatio = float(w)/h
+        print(aspectRatio)
+        if aspectRatio >=0.95 and aspectRatio<=1.05:
+            cv2.putText(img, "square", (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
+        else:
+            cv2.putText(img, "rectangle", (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
     elif len(approx) == 5:
         cv2.putText(img, "pentagon", (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
     elif len(approx) == 10:
-        cv2.putText(img, "polygon", (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
+        cv2.putText(img, "star", (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
+    else:
+        cv2.putText(img, "circle", (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
 
 cv2.imshow('image',img)
 #cv2.imshow('gray image',imgray)
