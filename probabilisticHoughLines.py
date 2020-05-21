@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-img = cv2.imread('sudoku.png')
+img = cv2.imread('road1.jpg')
 gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 edge = cv2.Canny(gray,50,150,apertureSize=3)
 cv2.imshow('edge',edge)
